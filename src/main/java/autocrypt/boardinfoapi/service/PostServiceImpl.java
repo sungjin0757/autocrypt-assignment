@@ -29,12 +29,10 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public PostDto findPost(Long userId, Long postId) {
-        Post findPost = postRepository.findPostWithUser(postId).orElseThrow(() -> {
-            throw new PostException("존재하지 않는 게시물 입니다.");
-        });
+        Post findPost = findOne(postId);
 
         if(findPost.getLocking().equals(Locking.DISABLED)){
-            checkIdentification(userId, findPost.getPostId(),
+            checkIdentification(userId, findPost.getUser().getUserId(),
                     "잠금되어 있는 게시물 입니다. (본인만 확인 가능합니다.)");
         }
 
@@ -45,7 +43,7 @@ public class PostServiceImpl implements PostService{
     @Transactional
     @Override
     public void removePosting(Long userId, Long postId) {
-        checkIdentification(userId, postId, "본인이 아닙니다.");
+        Post findPost = findPostWithCheckIdentification(userId, postId);
         try{
             postRepository.deleteById(postId);
         }catch (Exception e){
@@ -56,35 +54,31 @@ public class PostServiceImpl implements PostService{
     @Transactional
     @Override
     public void updatePosting(Long userId, Long postId, PostDto postDto) {
-        checkIdentification(userId, postId, "본인이 아닙니다.");
-        Post findPost = findOne(postId);
+        Post findPost = findPostWithCheckIdentification(userId, postId);
         findPost.update(postDto.getTitle(), postDto.getContent());
     }
 
     @Transactional
     @Override
     public void updateLocking(Long userId, Long postId, Locking locking) {
-        checkIdentification(userId, postId, "본인이 아닙니다.");
-        Post findPost = findOne(postId);
+        Post findPost = findPostWithCheckIdentification(userId, postId);
+        findPost.updateLocking(locking);
+    }
 
-        switch(locking){
-            case ENABLED:
-                findPost.unLock();
-            case DISABLED:
-                findPost.lock();
-            default:
-                throw new PostException("해당하지 않는 잠금 여부입니다.");
-        }
+    private Post findPostWithCheckIdentification(Long userId, Long postId){
+        Post findPost = findOne(postId);
+        checkIdentification(userId, findPost.getUser().getUserId(), "본인이 아닙니다.");
+        return findPost;
     }
 
     private Post findOne(Long postId){
-        return postRepository.findById(postId).orElseThrow(() -> {
-            throw new PostException("존재하지 않는 게시물입니다.");
+        return postRepository.findPostWithUser(postId).orElseThrow(() -> {
+            throw new PostException("존재하지 않는 게시물 입니다.");
         });
     }
 
-    private void checkIdentification(Long userId, Long postId, String message){
-        if(userId != postId){
+    private void checkIdentification(Long userId, Long postUserId, String message){
+        if(userId != postUserId){
             throw new PostException(message);
         }
     }

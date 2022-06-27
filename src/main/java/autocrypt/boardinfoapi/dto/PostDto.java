@@ -12,6 +12,11 @@ public class PostDto {
     private String content;
     private User user;
 
+    public PostDto(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
     private PostDto(Long postId, String title, String content, User user) {
         this.postId = postId;
         this.title = title;
@@ -21,5 +26,9 @@ public class PostDto {
 
     public static PostDto newInstance(Long postId, String title, String content, User user){
         return new PostDto(postId, title, content, user);
+    }
+
+    public static PostDto newInstance(String title, String content){
+        return new PostDto(title, content);
     }
 }

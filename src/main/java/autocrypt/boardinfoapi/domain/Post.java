@@ -37,11 +37,19 @@ public class Post extends AbstractDateTraceEntity{
     @JoinColumn(name = "user_id")
     private User user;
 
-    public void lock(){
+    public void updateLocking(Locking locking){
+        if(locking.equals(Locking.DISABLED)){
+            lock();
+        }else if(locking.equals(Locking.ENABLED)){
+            unLock();
+        }
+    }
+
+    private void lock(){
         this.locking = Locking.DISABLED;
     }
 
-    public void unLock(){
+    private void unLock(){
         this.locking = Locking.ENABLED;
     }
 
