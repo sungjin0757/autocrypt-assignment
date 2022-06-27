@@ -37,6 +37,31 @@ public class Post extends AbstractDateTraceEntity{
     @JoinColumn(name = "user_id")
     private User user;
 
+    public void lock(){
+        this.locking = Locking.DISABLED;
+    }
+
+    public void unLock(){
+        this.locking = Locking.ENABLED;
+    }
+
+    public void update(String title, String content){
+        updateTitle(title);
+        updateContent(content);
+    }
+
+    private void updateTitle(String title){
+        if(!(this.title.equals(title))){
+            this.title = title;
+        }
+    }
+
+    private void updateContent(String content){
+        if(!(this.content.equals(content))){
+            this.content = content;
+        }
+    }
+
     private Post(String title, String content) {
         this.title = title;
         this.content = content;
