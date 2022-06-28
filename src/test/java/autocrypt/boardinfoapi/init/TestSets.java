@@ -12,4 +12,5 @@ public abstract class TestSets {
     public static PostDto POST_DTO2 = PostDto.newInstance("title2", "content2");
     public static PostDto POST_DTO3 = PostDto.newInstance("title", "content2");
     public static PostDto POST_DTO4 = PostDto.newInstance("title3", "content2");
+
 }
