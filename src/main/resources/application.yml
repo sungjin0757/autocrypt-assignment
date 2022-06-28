@@ -12,3 +12,8 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         format_sql: true
+
+jwt:
+  secret: spring-boot-autocrypt-backend-assginment-security-jwt-secret-key
+  expiration: 30
+

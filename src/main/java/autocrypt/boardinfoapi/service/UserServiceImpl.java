@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService{
         User findUser = userRepository.findByEmail(email).orElseThrow(() -> {
             throw new UserException("이메일을 다시 확인해주세요.");
         });
+        Long findUserId = findUser.getUserId();
         String findUserEmail = findUser.getEmail();
         String findUserPassword = findUser.getPassword();
         String findUserName = findUser.getName();
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService{
 
         matchPassword(findUserPassword, password);
 
-        return UserDto.newInstance(findUserEmail, findUserPassword, findUserName,
+        return UserDto.newInstance(findUserId, findUserEmail, findUserPassword, findUserName,
                 createdDate, updatedDate);
     }
 
