@@ -1,5 +1,6 @@
 package autocrypt.boardinfoapi.controller;
 
+import autocrypt.boardinfoapi.common.constants.SecurityConstants;
 import autocrypt.boardinfoapi.common.constants.UrlConstants;
 import autocrypt.boardinfoapi.common.exception.ParameterException;
 import autocrypt.boardinfoapi.controller.util.ValidateUtil;
@@ -11,6 +12,8 @@ import autocrypt.boardinfoapi.vo.JwtResponse;
 import autocrypt.boardinfoapi.vo.RequestLogin;
 import autocrypt.boardinfoapi.vo.RequestUser;
 import autocrypt.boardinfoapi.vo.ResponseUser;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -26,11 +29,13 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(UrlConstants.USER_BASE)
 @RequiredArgsConstructor
+@SecurityRequirement(name = SecurityConstants.SWAGGER_KEY)
 @Slf4j
 public class UserApiController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
 
+    @Operation(summary = "회원가입")
     @PostMapping(UrlConstants.SAVE)
     public ResponseEntity<ResponseUser> save(@Valid @RequestBody RequestUser requestUser,
                                              BindingResult result){
@@ -48,6 +53,7 @@ public class UserApiController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
     }
 
+    @Operation(summary = "로그인")
     @PostMapping(UrlConstants.LOGIN)
     public ResponseEntity<JwtResponse> login(@Valid @RequestBody RequestLogin requestLogin,
                                              BindingResult result){

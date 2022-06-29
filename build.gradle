@@ -26,6 +26,8 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
 	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+	implementation 'org.springdoc:springdoc-openapi:1.6.3'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.3'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'

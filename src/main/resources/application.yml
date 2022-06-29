@@ -13,6 +13,13 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         format_sql: true
 
+springdoc:
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+
 jwt:
   secret: spring-boot-autocrypt-backend-assginment-security-jwt-secret-key
   expiration: 30

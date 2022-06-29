@@ -70,6 +70,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().requestMatchers(
                 PathRequest.toStaticResources().atCommonLocations()
-        );
+        )
+                .antMatchers("/swagger-ui/**")
+                .antMatchers("/api-docs/**")
+                .antMatchers("/swagger");
     }
 }
