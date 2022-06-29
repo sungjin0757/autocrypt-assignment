@@ -14,12 +14,16 @@ public class JwtPrincipal {
     private String name;
 
     public static JwtPrincipal fromClaims(Claims claims){
-        return new JwtPrincipal((Long) claims.get("userId"), (String) claims.get("email"),
+        return new JwtPrincipal(Long.valueOf((String) claims.get("userId")), (String) claims.get("email"),
                 (String) claims.get("password"), (String) claims.get("name"));
     }
 
     public static JwtPrincipal fromDto(UserDto userDto){
         return new JwtPrincipal(userDto.getUserId(), userDto.getEmail(), userDto.getPassword(),
                 userDto.getName());
+    }
+
+    public static JwtPrincipal newInstance(Long userId, String email, String password, String name){
+        return new JwtPrincipal(userId, email, password, name);
     }
 }

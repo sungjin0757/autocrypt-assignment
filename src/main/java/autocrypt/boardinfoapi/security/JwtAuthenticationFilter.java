@@ -3,9 +3,8 @@ package autocrypt.boardinfoapi.security;
 import autocrypt.boardinfoapi.common.constants.SecurityConstants;
 import autocrypt.boardinfoapi.common.exception.ErrorResult;
 import autocrypt.boardinfoapi.common.exception.JwtAuthenticationException;
-import autocrypt.boardinfoapi.security.JwtUtil;
 import autocrypt.boardinfoapi.security.property.JwtPrincipal;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +13,7 @@ import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 
 import javax.servlet.FilterChain;
@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Slf4j
 public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
     private final JwtUtil jwtUtil;
     private final String authenticateUrlPrefix;
@@ -58,7 +59,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
         }
 
         JwtPrincipal jwtPrincipal = jwtUtil.parseToken(token);
-        return new UsernamePasswordAuthenticationToken(jwtPrincipal, null);
+        return new UsernamePasswordAuthenticationToken(jwtPrincipal, null, AuthorityUtils.createAuthorityList());
     }
 
     @Override

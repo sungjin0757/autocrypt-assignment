@@ -54,9 +54,9 @@ public class JwtUtil {
         return header;
     }
 
-    private Map<String, Object> createClaims(JwtPrincipal jwtPrincipal){
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("userId", jwtPrincipal.getUserId());
+    private Map<String, String> createClaims(JwtPrincipal jwtPrincipal){
+        Map<String, String> claims = new HashMap<>();
+        claims.put("userId", String.valueOf(jwtPrincipal.getUserId()));
         claims.put("email", jwtPrincipal.getEmail());
         claims.put("password", jwtPrincipal.getPassword());
         claims.put("name", jwtPrincipal.getName());

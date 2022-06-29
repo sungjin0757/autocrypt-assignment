@@ -37,7 +37,7 @@ public class PostServiceImpl implements PostService{
         }
 
         return PostDto.newInstance(findPost.getPostId(), findPost.getTitle(), findPost.getContent(),
-                findPost.getUser());
+                findPost.getUser(), findPost.getCreatedDate(), findPost.getUpdatedDate());
     }
 
     @Transactional

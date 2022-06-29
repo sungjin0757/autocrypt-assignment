@@ -41,11 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return jwtAuthenticationFilter;
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager() throws Exception{
-        return super.authenticationManagerBean();
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
