@@ -137,7 +137,7 @@ http://localhost:8080/swagger-ui.html
 
       <img width="80%" alt="스크린샷 2022-06-30 오후 6 35 41" src="https://user-images.githubusercontent.com/56334761/176644780-c7477d70-b57b-433c-9105-a8580b2373dd.png">
 
-    - 잠금된 게시물을 본인이 아닌 User가 조회할 때 (Login Token을 다른 것을 집어 넣으면 됨)
+    - 잠금된 게시물을 본인이 아닌 User가 조회할 때 (다른 User의 Login Token을 다른 것을 집어 넣으면 됨)
 
       <img width="80%" alt="스크린샷 2022-06-30 오후 6 38 49" src="https://user-images.githubusercontent.com/56334761/176645268-0ceda028-a590-474c-a313-66ec5270b442.png">
     
@@ -146,7 +146,7 @@ http://localhost:8080/swagger-ui.html
    
       <img width="80%" alt="스크린샷 2022-06-30 오후 6 41 33" src="https://user-images.githubusercontent.com/56334761/176645991-ee953a37-cbf7-4b62-99f4-e83c771b13ce.png">
    
-    - 본인이 아닐 때 (Login Token을 다른 것을 집어 넣으면 됨) 
+    - 본인이 아닐 때 (다른 User의 Login Token을 다른 것을 집어 넣으면 됨) 
    
       <img width="80%" alt="스크린샷 2022-06-30 오후 6 41 16" src="https://user-images.githubusercontent.com/56334761/176645888-a3149ba1-4f36-48ba-9a3b-7ac92b8812d6.png">
 
@@ -161,7 +161,7 @@ http://localhost:8080/swagger-ui.html
 
       <img width="80%" alt="스크린샷 2022-06-30 오후 6 47 34" src="https://user-images.githubusercontent.com/56334761/176647371-e692734f-07e9-4b8a-bc17-85c435cf3718.png">
      
-   - 본인이 아닐 때 (Login Token을 다른 것을 집어 넣으면 됨) 
+   - 본인이 아닐 때 (다른 User의 Login Token을 다른 것을 집어 넣으면 됨) 
 
       <img width="80%" alt="스크린샷 2022-06-30 오후 6 47 59" src="https://user-images.githubusercontent.com/56334761/176647412-07cb3e8c-6d56-4f56-b7c8-4e5852997d3e.png">
      
@@ -170,7 +170,7 @@ http://localhost:8080/swagger-ui.html
 
       <img width="80%" alt="스크린샷 2022-06-30 오후 6 50 07" src="https://user-images.githubusercontent.com/56334761/176647875-39ad9cd0-63f0-4147-980f-4ebce3a1244e.png">
 
-    - 본인이 아닐 때 (Login Token을 다른 것을 집어 넣으면 됨) 
+    - 본인이 아닐 때 (다른 User의 Login Token을 다른 것을 집어 넣으면 됨) 
 
       <img width="80%" alt="스크린샷 2022-06-30 오후 6 49 52" src="https://user-images.githubusercontent.com/56334761/176648024-da222f76-3e11-441e-9f6c-5bc3c9852a4e.png">
     
